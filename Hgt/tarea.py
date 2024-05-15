@@ -6,7 +6,7 @@ class Tarea:
 
     #Métodos CRUD
     def read(self):
-        pass
+        print(f"La tarea {self.tarea} con el id {self.id} esta {self.estado}.")
 
     def update(self):
         pass
