@@ -4,19 +4,14 @@ from textual.widgets import Button, Static, Footer, Header
 
 
 class ButtonsApp(App[str]):
+
     CSS_PATH = "button.tcss"
-
     BINDINGS = [
-        Binding(key="q", action="Salir", description="Salir de la app"),
+        Binding(key="q", action="quit", description="Salir de la app"),
     ]
-
-    def on_mount(self) -> None:
-        self.title = "Header Application"
-        self.sub_title = "Saludar y Salir"
 
     def compose(self) -> ComposeResult:
         yield Header()
-        yield Footer()
         yield Horizontal(
             VerticalScroll(
                 Static("Botones Saludar", classes="header"),
@@ -24,9 +19,15 @@ class ButtonsApp(App[str]):
             ),
             VerticalScroll(
                 Static("Boton Salir", classes="header"),
-                Button("Salir", id="Saludar"),
+                Button("Salir"),
             ),
         )
+        yield Footer()
+
+    def on_mount(self) -> None:
+        self.title = "Header"
+        self.sub_title = "Saludar y Salir"
+
 
     def on_button_pressed(self, event: Button.Pressed) -> None:
         if event.button.id == "Saludar":
