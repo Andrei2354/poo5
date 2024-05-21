@@ -8,8 +8,12 @@ class Tarea:
     def read(self):
         print(f"La tarea {self.tarea} con el id {self.id} esta {self.estado}.")
 
-    def update(self):
-        pass
+    def update(self, u_id:int, u_tarea:str, u_estado:bool):
+        self.id     = u_id
+        self.tarea  = u_tarea
+        self.estado = u_estado
 
-    def delete(self):
-        pass
+    def delete(self)-> None:
+        self.id = None
+        self.tarea = None
+        self.estado = None
