@@ -6,7 +6,7 @@ class ListaTareas:
     def __init__(self):
         self.lista = []
     
-    def lista_agregar(self, tarea:Tarea):
+    def agregar(self, tarea:Tarea):
         self.lista.append(tarea)
     
     def read(self):
@@ -23,17 +23,19 @@ class ListaTareas:
         for tarea in tareas:
             self.lista.append(tarea)
     
-    def update(self, nombreTarea:Tarea, id:int, tarea:str, estado:bool):
+    def update(self, tarea:Tarea):
         for a in self.lista:
-            if a == nombreTarea:
-                a.update(id, tarea, estado)
+            if a == tarea:
+                a.update(tarea)
                 break
     
-    def delete(self, nombreTarea:Tarea, id:int, tarea:str, estado:bool):
+    def delete(self, tarea:Tarea):
         for a in self.lista:
-            if a == nombreTarea:
-                a.delete()
+            if a == tarea:
+                a.delete(tarea)
                 break
+
+
 
     def __str__(self):
         return self.read()
@@ -54,13 +56,13 @@ class ListaTareas:
         return self.lista.__iter__()
     
     def __next__(self):
-        return self.v.__next__()
+        return self.lista.__next__()
     
     def __contains__(self, item):
         return item in self.lista
     
     def __eq__(self, other):
-        return self.lista == other.v
+        return self.lista == other.lista
     
     def __ne__(self, other):
         return self.lista != other.lista
